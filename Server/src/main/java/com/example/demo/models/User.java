@@ -2,16 +2,19 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "User")
 public class User {
 
-    @ManyToMany(mappedBy = "user")
-    private List<Question> question;
+    @ManyToMany
+    @JoinTable(name = "question_user", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "question_id"))
+    private Set<Question> questionSet;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "first_name" )
@@ -23,8 +26,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "sex")
-    private String sex;
+    @Column(name = "password")
+    private String password;
 
     public Long getId() {
         return id;
@@ -54,12 +57,12 @@ public class User {
         this.email = email;
     }
 
-    public String getSex() {
-        return sex;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -69,16 +72,16 @@ public class User {
                 ", FirstName='" + FirstName + '\'' +
                 ", SecondName='" + SecondName + '\'' +
                 ", email='" + email + '\'' +
-                ", sex='" + sex + '\'' +
+                ", sex='" + password + '\'' +
                 '}';
     }
 
     public User(){}
 
-    public User(String firstName, String secondName,String email, String sex){
+    public User(String firstName, String secondName,String email, String password){
         this.FirstName = firstName;
         this.SecondName = secondName;
         this.email = email;
-        this.sex = sex;
+        this.password = password;
     }
 }

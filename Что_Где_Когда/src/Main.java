@@ -19,7 +19,7 @@ public class Main extends Application {
 
         //showSignInOverview();
 
-        showSignUpOverview();
+        //showSignUpOverview();
 
         primaryStage.show();
 

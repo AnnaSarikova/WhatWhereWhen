@@ -49,5 +49,19 @@ public class SignInController {
 
     }
 
+    public void SignInAction(javafx.event.ActionEvent actionEvent) throws IOException {
+        if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()){
+            Node node = (Node) actionEvent.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+            Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/Account.fxml")))));
+            Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            app_stage.setScene(scene);
+            app_stage.show();
+
+
+        }
+    }
+
 }
 

@@ -8,6 +8,5 @@ public class ConnectionManager {
     FileInputStream fis;
     Properties property = new Properties();
 
-    fis = new FileInputStream("src/main/java/resources/application.properties");
-    property.load(fis);
+
 }

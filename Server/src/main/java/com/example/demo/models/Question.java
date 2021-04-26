@@ -2,15 +2,14 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Question")
 public class Question {
-    @ManyToMany
-    private List<User> user;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "questions")
@@ -18,6 +17,9 @@ public class Question {
 
     @Column(name = "type")
     private String type;
+
+    @ManyToMany(mappedBy = "questionSet")
+    private Set<User> users;
 
     public int getId() {
         return id;
@@ -39,9 +41,7 @@ public class Question {
         this.type = type;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
+
 
     @Override
     public String toString() {
