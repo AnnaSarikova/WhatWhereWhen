@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #498eb8;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #498eb8;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignInController">
    <children>
       <Label layoutX="200.0" layoutY="7.0" text="Что? Где? Когда?" textAlignment="CENTER">
          <font>
@@ -45,12 +45,12 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="232.0" layoutY="128.0" prefHeight="40.0" prefWidth="237.0" promptText="Пароль/Password">
+            <PasswordField fx:id="SgnInPassword" layoutX="232.0" layoutY="128.0" prefHeight="40.0" prefWidth="237.0" promptText="Пароль/Password">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <Button fx:id="SignUpButton" layoutX="273.0" layoutY="268.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #498eb8;" text="Зарегистрироваться" textFill="WHITE">
+            <Button fx:id="SignUpButton" layoutX="273.0" layoutY="268.0" mnemonicParsing="false" onAction="#switchToSignUp" prefHeight="30.0" prefWidth="153.0" style="-fx-background-color: #498eb8;" text="Зарегистрироваться" textFill="WHITE">
                <font>
                   <Font name="Gadugi" size="12.0" />
                </font>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e4e9f4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.views.AboutUs">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e4e9f4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutUsController">
    <children>
       <AnchorPane prefHeight="62.0" prefWidth="600.0" style="-fx-background-color: #498eb8;">
          <children>
@@ -26,5 +26,10 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Button fx:id="BackButton" layoutX="270.0" layoutY="344.0" mnemonicParsing="false" onAction="#switchToAccount" style="-fx-background-color: #498eb8;" text="Назад" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
