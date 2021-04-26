@@ -15,9 +15,11 @@ public class Main extends Application {
 
         primaryStage.setTitle("WhatWhereWhen");
 
-        showAccountOverview();
+        //showAccountOverview();
 
         //showSignInOverview();
+
+        showSignUpOverview();
 
         primaryStage.show();
 
