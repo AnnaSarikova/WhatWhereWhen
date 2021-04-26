@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Main_Controller">
+   <children>
+      <MenuBar layoutX="238.0" layoutY="435.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="About ">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <DropShadow />
+         </effect>
+      </MenuBar>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="302.0" layoutX="149.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" width="301.0">
+         <fill>
+            <LinearGradient endX="0.9968253726050967" endY="1.0" startX="0.37777778080531527" startY="0.4126984005882626">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6000000238418579" blue="1.0" opacity="0.23999999463558197" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ButtonBar layoutX="143.0" layoutY="347.0" prefHeight="54.0" prefWidth="301.0">
+        <buttons>
+          <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="145.0" text="Войти" />
+            <Button mnemonicParsing="false" prefHeight="27.0" text="Зарегестрироваться" />
+        </buttons>
+      </ButtonBar>
+      <Label layoutX="183.0" layoutY="236.0" prefHeight="27.0" prefWidth="54.0" text="Email" />
+      <TextField alignment="CENTER" layoutX="261.0" layoutY="134.0" prefHeight="31.0" prefWidth="77.0" text="Вход">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="257.0" layoutY="237.0" />
+      <Label layoutX="150.0" layoutY="26.0" text="Что? Где? Когда?">
+         <font>
+            <Font size="39.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.22" height="68.44" radius="18.5875" width="7.91">
+               <color>
+                  <Color red="0.625" blue="0.9868420958518982" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

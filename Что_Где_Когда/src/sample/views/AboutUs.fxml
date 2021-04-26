@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e4e9f4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.views.AboutUs">
+   <children>
+      <AnchorPane prefHeight="62.0" prefWidth="600.0" style="-fx-background-color: #498eb8;">
+         <children>
+            <Label layoutX="269.0" layoutY="13.0" text="О нас" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="129.0" layoutY="99.0" text="Игровое приложение ЧТО? ГДЕ? КОГДА?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="172.0" text="Проект разработала студентка группы ПИ19-5 Сарикова Анна">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
