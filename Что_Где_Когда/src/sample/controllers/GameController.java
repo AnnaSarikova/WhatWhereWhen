@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GameController {
@@ -28,6 +29,8 @@ public class GameController {
     @FXML
     private TextArea GameTextAreaQuestion;
 
+
+
     @FXML
     private TextArea GameTextAreaAnswer;
 
@@ -36,6 +39,7 @@ public class GameController {
 
     @FXML
     void initialize() {
+        GameTextAreaQuestion.appendText("Hello");
     }
 
     @FXML
@@ -56,6 +60,14 @@ public class GameController {
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.setScene(enter_page_scene);
         app_stage.show();
+    }
+
+
+    @FXML
+    public void SendAnswerAction(ActionEvent event) throws IOException{
+        String text = new String();
+        text = GameTextAreaAnswer.getText();
+
     }
 }
 

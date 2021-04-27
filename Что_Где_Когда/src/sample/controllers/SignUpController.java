@@ -54,18 +54,21 @@ public class SignUpController {
         if (!SignUpFirstName.getText().isBlank() && !SignUpSecondName.getText().isBlank() &&
                 !SignUpLoginfield.getText().isBlank()  &&
                 !SignUpPassword.getText().isBlank()) {
+            //отправление данных на сервер для записывания в бд
             String first_name = SignUpFirstName.getText();
             String second_name = SignUpSecondName.getText();
             String email = SignUpLoginfield.getText();
             String password = SignUpPassword.getText();
             Map<String, Object> regResult = API.registration(first_name, second_name, email, password);
 
-
+            //после регистрации переход на вход
             Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
-            Scene scene = new Scene((FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/views/SignIn.fxml")))));
-
+            Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/SignIn.fxml")))));
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            app_stage.setScene(scene);
+            app_stage.show();
         }
 
     }

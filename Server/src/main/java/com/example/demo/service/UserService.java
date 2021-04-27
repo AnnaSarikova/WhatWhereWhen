@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.models.User;
 import com.example.demo.repo.UserRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,10 +17,18 @@ public class UserService {
 
     }
 
-    public List<User> getAllUsers() { return userRepository.findAll(); }
+    public User create(String first_name, String second_name, String email, String password) {
 
 
-    public User getById(Long id) { return userRepository.getOne(id); }
+        User newUser = new User();
 
-    public  User addUser(User user) { return userRepository.saveAndFlush(user); }
+        newUser.setFirstName(first_name);
+        newUser.setSecondName(second_name);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.setScore(0L);
+
+        userRepository.save(newUser);
+        return newUser;
+    }
 }

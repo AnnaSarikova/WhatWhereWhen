@@ -15,13 +15,13 @@ public class API {
      * Регистрация пользователя в системе
      *
      */
-    public static Map<String, Object> registration(String first_name, String second_name, String login, String password) {
+    public static Map<String, Object> registration(String first_name, String second_name, String email, String password) {
 
-        String URL = serverURL+"/user/register";
+        String URL = serverURL+"/registration";
         Map<String, String> params = new HashMap<>();
         params.put("first_name",first_name);
         params.put("second_name", second_name);
-        params.put("login", login);
+        params.put("email", email);
         params.put("password", password);
         String response = RequestUtil.sendPOST(URL, params);
         Map<String, Object> resultMap = new HashMap<>();
