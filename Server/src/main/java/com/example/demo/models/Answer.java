@@ -8,13 +8,17 @@ public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int idAnswer;
 
     @Column(name = "type")
     private String type;
 
+
+    @OneToOne(mappedBy = "answer", cascade = CascadeType.ALL)
+    private Question question;
+
     public int getId() {
-        return id;
+        return idAnswer;
     }
 
     public String getType() {
@@ -25,10 +29,22 @@ public class Answer {
         this.type = type;
     }
 
+    public void setId(int id) {
+        this.idAnswer = id;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
     @Override
     public String toString() {
         return "Answer{" +
-                "id=" + id +
+                "id=" + idAnswer +
                 ", type='" + type + '\'' +
                 '}';
     }

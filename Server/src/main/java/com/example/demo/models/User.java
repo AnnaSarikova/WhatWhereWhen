@@ -29,8 +29,15 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "score")
+    private Long score;
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -65,6 +72,14 @@ public class User {
         this.password = password;
     }
 
+    public Long getScore() {
+        return score;
+    }
+
+    public void setScore(Long score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -72,7 +87,7 @@ public class User {
                 ", FirstName='" + FirstName + '\'' +
                 ", SecondName='" + SecondName + '\'' +
                 ", email='" + email + '\'' +
-                ", sex='" + password + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 

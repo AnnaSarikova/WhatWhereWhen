@@ -18,6 +18,10 @@ public class Question {
     @Column(name = "type")
     private String type;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAnswer")
+    private Answer answer;
+
     @ManyToMany(mappedBy = "questionSet")
     private Set<User> users;
 

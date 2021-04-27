@@ -2,6 +2,9 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -15,7 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SignInController {
+public class SignInController<Gson> {
 
     @FXML
     private ResourceBundle resources;
@@ -36,7 +39,7 @@ public class SignInController {
     private Button SignUpButton;
 
     @FXML
-    void initialize() {
+    void initialize(URL url,ResourceBundle resources) {
     }
 
     @FXML
@@ -49,7 +52,11 @@ public class SignInController {
 
     }
 
-    public void SignInAction(javafx.event.ActionEvent actionEvent) throws IOException {
+
+
+
+    public void SignInAction(ActionEvent actionEvent) throws IOException {
+
         if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()){
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
