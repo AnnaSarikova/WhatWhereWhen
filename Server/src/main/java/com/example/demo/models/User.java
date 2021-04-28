@@ -56,16 +56,16 @@ public class User {
         SecondName = secondName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail(String email) {
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword(String password) {
+        return this.password;
     }
 
     public void setPassword(String password) {

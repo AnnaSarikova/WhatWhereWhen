@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.utils.API;
 
 public class SignInController<Gson> {
 
@@ -58,6 +60,12 @@ public class SignInController<Gson> {
     public void SignInAction(ActionEvent actionEvent) throws IOException {
 
         if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()){
+            String email = SignInloginfield.getText();
+            String password = SgnInPassword.getText();
+            Map<String, Object> authResult = API.auth(email, password);
+            
+            
+
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.close();
@@ -65,8 +73,6 @@ public class SignInController<Gson> {
             Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             app_stage.setScene(scene);
             app_stage.show();
-
-
         }
     }
 

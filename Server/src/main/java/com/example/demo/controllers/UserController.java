@@ -72,5 +72,21 @@ public class UserController {
     }
 
 
+    @GetMapping(value = "/auth", params = {"email", "password"})
+    public ResponseEntity<User> auth(@RequestParam String email, @RequestParam String password) {
+
+        UserService userService = new UserService(userRepository);
+        User user = userService.checkauth(email, password);
+
+        return user != null
+                ? new ResponseEntity<>(user, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+
+
+
+
 }
 

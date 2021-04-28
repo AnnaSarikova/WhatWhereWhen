@@ -3,6 +3,8 @@ package sample.utils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +36,23 @@ public class API {
      * Авторизация пользователя в системе
      * с помощью пары логин-пароль
      *
-     * @param login    - логин пользователя
+     * @param email    - логин пользователя
      * @param password - пароль пользоваетля
      * @return boolean
-     *
      */
-    // boolean auth(String login, String password);
+    public static Map<String, Object> auth(String email, String password) {
+
+        String URL = serverURL+"/auth";
+        Map<String, String> params = new HashMap<>();
+        params.put("email", email);
+        params.put("password", password);
+        String user = RequestUtil.sendPOST(URL, params);
+        Map<String, Object> resultMap = new HashMap<>();
+        return new HashMap<>() {{
+            put("user", user );
+        }};
+    }
+
 
 
 }

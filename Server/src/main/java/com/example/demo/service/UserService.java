@@ -1,11 +1,14 @@
 package com.example.demo.service;
 
+import com.example.demo.controllers.UserController;
 import com.example.demo.models.User;
 import com.example.demo.repo.UserRepository;
+import org.hibernate.mapping.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -31,4 +34,21 @@ public class UserService {
         userRepository.save(newUser);
         return newUser;
     }
+
+
+    public User checkauth(String email, String password) {
+        User user = userRepository.findUserByEmail(email);
+
+        if (user != null && user.getPassword(password).equals(password)){
+            return user;
+        }
+
+        return null;
+
+
+    }
+
+
+
+
 }

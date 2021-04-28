@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import javax.swing.text.html.ImageView;
 
 public class GameController {
 
@@ -29,8 +34,8 @@ public class GameController {
     @FXML
     private TextArea GameTextAreaQuestion;
 
-
-
+    @FXML
+    private ImageView GifAction;
     @FXML
     private TextArea GameTextAreaAnswer;
 
