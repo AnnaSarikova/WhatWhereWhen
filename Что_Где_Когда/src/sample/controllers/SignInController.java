@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -41,7 +42,10 @@ public class SignInController<Gson> {
     private Button SignUpButton;
 
     @FXML
-    void initialize(URL url,ResourceBundle resources) {
+    private Label LabelPassword;
+
+    @FXML
+    void initialize(URL url, ResourceBundle resources) {
     }
 
     @FXML
@@ -55,26 +59,32 @@ public class SignInController<Gson> {
     }
 
 
-
-
     public void SignInAction(ActionEvent actionEvent) throws IOException {
 
-        if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()){
+        if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()) {
             String email = SignInloginfield.getText();
             String password = SgnInPassword.getText();
             Map<String, Object> authResult = API.auth(email, password);
-            
-            
 
-            Node node = (Node) actionEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-            Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/Account.fxml")))));
-            Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            app_stage.setScene(scene);
-            app_stage.show();
+            if (authResult.containsValue(null)) {
+                LabelPassword.setText("Неправильный email или пароль");
+                System.out.println("Неправильный email или пароль");
+            }
+            else{
+                Node node = (Node) actionEvent.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                stage.close();
+                Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/Account.fxml")))));
+                Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                app_stage.setScene(scene);
+                app_stage.show();
+            }
+        }
+        else {
+            LabelPassword.setText("Не все поля заполнены");
         }
     }
-
 }
+
+
 

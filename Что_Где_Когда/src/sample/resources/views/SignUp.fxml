@@ -5,17 +5,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #498eb8;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignUpController">
    <children>
-      <AnchorPane layoutY="68.0" prefHeight="334.0" prefWidth="700.0" style="-fx-background-color: #e4e9f4;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
+      <AnchorPane layoutY="74.0" prefHeight="334.0" prefWidth="700.0" style="-fx-background-color: #e4e9f4;" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.0">
          <children>
             <TextField fx:id="SignUpFirstName" layoutX="38.0" layoutY="31.0" prefHeight="31.0" prefWidth="279.0" promptText="Имя/Name" />
             <TextField fx:id="SignUpSecondName" layoutX="38.0" layoutY="82.0" prefHeight="31.0" prefWidth="279.0" promptText="Фамилия/Second Name" />
             <TextField fx:id="SignUpLoginfield" layoutX="38.0" layoutY="134.0" prefHeight="31.0" prefWidth="279.0" promptText="Логин/e-mail" />
-            <Button fx:id="SignUpButton" layoutX="286.0" layoutY="279.0" mnemonicParsing="false" onAction="#SignUpAction" style="-fx-background-color: #498eb8;" text="Зарегистрироваться" textFill="WHITE" />
+            <Button fx:id="SignUpButton" layoutX="90.0" layoutY="247.0" mnemonicParsing="false" onAction="#SignUpAction" style="-fx-background-color: #498eb8;" text="Зарегистрироваться" textFill="WHITE" />
             <TextField fx:id="SignUpPassword" layoutX="38.0" layoutY="185.0" prefHeight="31.0" prefWidth="279.0" promptText="Пароль/Password" />
+            <Button fx:id="SignUpEntreButton" layoutX="466.0" layoutY="244.0" mnemonicParsing="false" onAction="#EntreAction" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: #498eb8;" text="Войти" textFill="WHITE" />
+            <Label layoutX="428.0" layoutY="48.0" text="Уже есть аккаунт?">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="12.666656494140625" endY="82.58084106445312" layoutX="489.0" layoutY="145.0" startX="12.666656494140625" startY="-49.0" />
+            <Line endX="87.16665649414062" endY="11.080841064453125" layoutX="414.0" layoutY="217.0" startX="52.666656494140625" startY="-13.0" />
+            <Line endX="111.0" endY="-20.0" layoutX="423.0" layoutY="226.0" startX="78.87374877929688" startY="2.787933349609375" />
+            <Label fx:id="SignUpLabel" alignment="CENTER" layoutX="38.0" layoutY="286.0" prefHeight="17.0" prefWidth="279.0" />
          </children></AnchorPane>
       <StackPane layoutX="269.0" layoutY="6.0" prefHeight="45.0" prefWidth="162.0" AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="269.0" AnchorPane.topAnchor="6.0">
          <children>

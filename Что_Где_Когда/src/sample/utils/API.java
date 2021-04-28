@@ -2,6 +2,7 @@ package sample.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import sample.model.User;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -46,10 +47,11 @@ public class API {
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
-        String user = RequestUtil.sendPOST(URL, params);
-        Map<String, Object> resultMap = new HashMap<>();
-        return new HashMap<>() {{
-            put("user", user );
+        String user = RequestUtil.sendPOST(  URL, params);
+        User user1 = new User();
+        System.out.println(user);
+        return new HashMap<>(){{
+            put("user", user);
         }};
     }
 

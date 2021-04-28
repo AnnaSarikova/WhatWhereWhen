@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 public class RequestUtil  {
-    public static String sendGET(String urlString) {
+    public static String sendGET(String urlString, Map<String, String> params) {
 
         try {
             URL url = new URL(urlString);

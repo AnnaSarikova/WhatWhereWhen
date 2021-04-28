@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.utils.API;
@@ -45,6 +46,9 @@ public class SignUpController {
     private TextField SignUpPassword;
 
     @FXML
+    private Label SignUpLabel;
+
+    @FXML
     void initialize() {
 
     }
@@ -62,16 +66,36 @@ public class SignUpController {
             Map<String, Object> regResult = API.registration(first_name, second_name, email, password);
 
             //после регистрации переход на вход
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-            Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/SignIn.fxml")))));
-            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            app_stage.setScene(scene);
-            app_stage.show();
+            if (regResult.containsValue(null)){
+                SignUpLabel.setText("Вы ввели некорректные данные");
+            }
+            else {
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                stage.close();
+                Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/SignIn.fxml")))));
+                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                app_stage.setScene(scene);
+                app_stage.show();
+            }
+        }
+        else {
+            SignUpLabel.setText("Не все поля заполнены");
         }
 
     }
+    @FXML
+    public void EntreAction(Event actionEvent) throws IOException{
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
+        Scene scene = new Scene((FXMLLoader.load((getClass().getResource("/views/SignIn.fxml")))));
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.setScene(scene);
+        app_stage.show();
+    }
 
 }
+
+
 
