@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,14 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+import sample.Main;
+import sample.model.Question;
 import sample.utils.API;
 
 import javax.swing.text.html.ImageView;
 
 public class GameController {
+
+    private Question question;
 
     @FXML
     private ResourceBundle resources;
@@ -54,16 +54,24 @@ public class GameController {
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
         if (GameTextAreaAnswer != null) {
+
             String answer = GameTextAreaAnswer.getText();
-            String question = GameTextAreaQuestion.getText();
-            Map<String, Object> authResult = API.auth(answer, question);
+            String id_question = String.valueOf(question.getId());
 
+            System.out.println(id_question);
+            System.out.println(Main.getUser().getId());
 
-            Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Game.fxml"));
-            Scene enter_page_scene = new Scene(enter_page);
-            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            app_stage.setScene(enter_page_scene);
-            app_stage.show();
+            Long id_user = Main.getUser().getId();
+            System.out.println(id_user);
+            Map<String, String> checkanswer = API.checkansw(answer,id_question,String.valueOf(Main.getUser().getId()));
+            if (!checkanswer.isEmpty()) {
+
+                Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Game.fxml"));
+                Scene enter_page_scene = new Scene(enter_page);
+                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                app_stage.setScene(enter_page_scene);
+                app_stage.show();
+            }
         }
         else {
 
@@ -90,13 +98,18 @@ public class GameController {
 
     @FXML
     public void ShowQuestionAction(ActionEvent event) throws IOException{
-        int max = 3;
-        int min = 1;
-        max-=min;
-        int id =(int)(Math.random()*++max)+min;
-        Map<String,Object> getquestion = API.getquest(id);
-        GameTextAreaQuestion.setText(String.valueOf(getquestion.get("question")));
 
+        int id = random(3,1);
+        this.question = API.getquest(id);
+        question.setId(id);
+
+
+        GameTextAreaQuestion.setText(question.getQuestions());
+
+    }
+    public int random(int max, int min){
+        max-=min;
+        return (int)(Math.random()*++max)+min;
     }
 }
 

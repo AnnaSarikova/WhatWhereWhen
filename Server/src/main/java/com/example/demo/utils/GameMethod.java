@@ -14,5 +14,14 @@ public class GameMethod {
     Answer answer = answerRepository.getAnswerByQuestion();
      */
 
+    public void random(int max, int min) {
+        max = 3;
+        min = 1;
+        max -= min;
+        int id = (int) (Math.random() * ++max) + min;
+    }
+
+
+
 }
 

@@ -25,11 +25,6 @@
       </Button>
       <TextArea fx:id="GameTextAreaQuestion" editable="false" layoutX="126.0" layoutY="74.0" prefHeight="116.0" prefWidth="468.0" />
       <TextArea fx:id="GameTextAreaAnswer" layoutX="129.0" layoutY="200.0" prefHeight="122.0" prefWidth="461.0" />
-      <Label layoutX="26.0" layoutY="114.0" text="Вопрос">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="35.0" layoutY="249.0" text="Ответ">
          <font>
             <Font size="24.0" />
@@ -45,6 +40,9 @@
             <Image url="@../images/tenor.gif" />
          </image>
       </ImageView>
-      <Button fx:id="ShowQuestion" layoutX="26.0" layoutY="74.0" mnemonicParsing="false" onAction="#ShowQuestionAction" text="ShowQuestion" />
+      <Button fx:id="ShowQuestion" layoutX="20.0" layoutY="98.0" mnemonicParsing="false" onAction="#ShowQuestionAction" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #498eb8;" text="Вопрос" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

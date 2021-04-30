@@ -83,11 +83,13 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "questionSet=" + questionSet +
+                ", id=" + id +
                 ", FirstName='" + FirstName + '\'' +
                 ", SecondName='" + SecondName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", score=" + score +
                 '}';
     }
 

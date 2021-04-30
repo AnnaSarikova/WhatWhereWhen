@@ -1,7 +1,10 @@
 package sample.utils;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import sample.Main;
+import sample.model.Question;
 import sample.model.User;
 
 import java.net.URLEncoder;
@@ -14,6 +17,7 @@ import java.util.Map;
 public class API {
 
     static String serverURL = "http://localhost:8081";
+    private static final Gson gson = new Gson();
 
 
     /**
@@ -43,30 +47,39 @@ public class API {
      * @param password - пароль пользоваетля
      * @return boolean
      */
-    public static Map<String, Object> auth(String email, String password) {
-
+    public static User auth(String email, String password) {
         String URL = serverURL+"/auth";
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
         params.put("password", password);
-        String user = RequestUtil.sendPOST(  URL, params);
-        User user1 = new User();
-        System.out.println(user);
-        return new HashMap<>(){{
-            put("user", user);
-        }};
+        String userString = RequestUtil.sendPOST(  URL, params);
+        System.out.println(userString);
+        return gson.fromJson(userString, User.class);
     }
 
-    public static Map<String, Object> getquest(int id){
+    public static Question getquest(int id){
 
         String URL = serverURL + "/question";
         Map<String, String> params = new HashMap<>();
         params.put("id", String.valueOf(id));
-        String question = RequestUtil.sendPOST(URL, params);
-        System.out.println(question);
+        String questionString = RequestUtil.sendPOST(URL, params);
+        return gson.fromJson(questionString, Question.class);
+
+    }
+
+    public static Map<String,String> checkansw(String answer, String id_question, String id){
+        String URL = serverURL + "/answer";
+        Map<String, String> params = new HashMap<>();
+        params.put("answer", answer);
+        params.put("id_question",id_question);
+        params.put("id", id);
+        String answ = RequestUtil.sendPOST(URL, params);
         return new HashMap<>(){{
-            put("question", question);
+            put("answer",answ);
         }};
+
+
+
     }
 
     /*

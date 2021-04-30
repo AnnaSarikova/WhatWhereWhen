@@ -18,7 +18,8 @@ public class User {
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id = id
+        ;
     }
 
     public String getFirstName() {
@@ -60,4 +61,6 @@ public class User {
     public void setScore(Long score) {
         this.score = score;
     }
+
+
 }

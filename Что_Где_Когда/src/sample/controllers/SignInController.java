@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Main;
 import sample.utils.API;
 
 public class SignInController<Gson> {
@@ -64,9 +65,10 @@ public class SignInController<Gson> {
         if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()) {
             String email = SignInloginfield.getText();
             String password = SgnInPassword.getText();
-            Map<String, Object> authResult = API.auth(email, password);
+            Main.setUser(API.auth(email, password));
+            System.out.println(Main.getUser().getId());
 
-            if (authResult.containsValue(null)) {
+            if (Main.getUser() == null) {
                 LabelPassword.setText("Неправильный email или пароль");
             }
             else{
