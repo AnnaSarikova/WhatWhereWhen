@@ -6,7 +6,9 @@ import sample.model.User;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class API {
@@ -54,6 +56,35 @@ public class API {
             put("user", user);
         }};
     }
+
+    public static Map<String, Object> getquest(int id){
+
+        String URL = serverURL + "/question";
+        Map<String, String> params = new HashMap<>();
+        params.put("id", String.valueOf(id));
+        String question = RequestUtil.sendPOST(URL, params);
+        System.out.println(question);
+        return new HashMap<>(){{
+            put("question", question);
+        }};
+    }
+
+    /*
+    public static Map<String, Object> game(String answer,String question){
+        {
+
+            String URL = serverURL+"/question";
+            List<String> params = new ArrayList<>();
+            String game = RequestUtil.sendGET( URL);
+            System.out.println(game);
+            return new ArrayList<>(){{
+                add(game);
+            }};
+        }
+
+    }
+
+     */
 
 
 

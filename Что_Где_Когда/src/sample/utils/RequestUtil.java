@@ -8,10 +8,12 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 
 public class RequestUtil  {
-    public static String sendGET(String urlString, Map<String, String> params) {
+
+    public static String sendGET(String urlString) {
 
         try {
             URL url = new URL(urlString);
@@ -131,4 +133,6 @@ public class RequestUtil  {
             return null;
         }
     }
+
+
 }

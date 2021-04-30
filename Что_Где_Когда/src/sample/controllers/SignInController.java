@@ -68,7 +68,6 @@ public class SignInController<Gson> {
 
             if (authResult.containsValue(null)) {
                 LabelPassword.setText("Неправильный email или пароль");
-                System.out.println("Неправильный email или пароль");
             }
             else{
                 Node node = (Node) actionEvent.getSource();

@@ -2,6 +2,7 @@ package sample.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.utils.API;
 
 import javax.swing.text.html.ImageView;
 
@@ -43,18 +45,29 @@ public class GameController {
     private Button EndButton;
 
     @FXML
+    private Button ShowQuestion;
+
+    @FXML
     void initialize() {
-        GameTextAreaQuestion.appendText("Hello");
     }
 
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
+        if (GameTextAreaAnswer != null) {
+            String answer = GameTextAreaAnswer.getText();
+            String question = GameTextAreaQuestion.getText();
+            Map<String, Object> authResult = API.auth(answer, question);
 
-        Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Game.fxml"));
-        Scene enter_page_scene = new Scene(enter_page);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.setScene(enter_page_scene);
-        app_stage.show();
+
+            Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Game.fxml"));
+            Scene enter_page_scene = new Scene(enter_page);
+            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            app_stage.setScene(enter_page_scene);
+            app_stage.show();
+        }
+        else {
+
+        }
 
     }
 
@@ -72,6 +85,17 @@ public class GameController {
     public void SendAnswerAction(ActionEvent event) throws IOException{
         String text = new String();
         text = GameTextAreaAnswer.getText();
+
+    }
+
+    @FXML
+    public void ShowQuestionAction(ActionEvent event) throws IOException{
+        int max = 3;
+        int min = 1;
+        max-=min;
+        int id =(int)(Math.random()*++max)+min;
+        Map<String,Object> getquestion = API.getquest(id);
+        GameTextAreaQuestion.setText(String.valueOf(getquestion.get("question")));
 
     }
 }

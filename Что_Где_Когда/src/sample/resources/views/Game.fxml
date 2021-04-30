@@ -45,5 +45,6 @@
             <Image url="@../images/tenor.gif" />
          </image>
       </ImageView>
+      <Button fx:id="ShowQuestion" layoutX="26.0" layoutY="74.0" mnemonicParsing="false" onAction="#ShowQuestionAction" text="ShowQuestion" />
    </children>
 </AnchorPane>
