@@ -82,23 +82,5 @@ public class API {
 
     }
 
-    /*
-    public static Map<String, Object> game(String answer,String question){
-        {
-
-            String URL = serverURL+"/question";
-            List<String> params = new ArrayList<>();
-            String game = RequestUtil.sendGET( URL);
-            System.out.println(game);
-            return new ArrayList<>(){{
-                add(game);
-            }};
-        }
-
-    }
-
-     */
-
-
 
 }
