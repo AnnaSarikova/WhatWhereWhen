@@ -12,6 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ *  rules controller
+ *  контроллер для окна правила
+ */
 public class RulesController {
 
     @FXML
@@ -29,6 +33,12 @@ public class RulesController {
 
     }
 
+    /**
+     * switch to account
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void switchToAccount(ActionEvent event) throws IOException {
         Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Account.fxml"));

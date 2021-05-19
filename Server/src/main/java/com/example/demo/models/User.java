@@ -1,17 +1,17 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import java.util.Comparator;
 
+
+/**
+ *  user
+ *  модель для таблицы пользователя
+ */
 @Entity
 @Table(name = "User")
 public class User {
 
-    @ManyToMany
-    @JoinTable(name = "question_user", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "question_id"))
-    private Set<Question> questionSet;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -83,8 +83,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "questionSet=" + questionSet +
-                ", id=" + id +
+                " id=" + id +
                 ", FirstName='" + FirstName + '\'' +
                 ", SecondName='" + SecondName + '\'' +
                 ", email='" + email + '\'' +
@@ -101,4 +100,10 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    public static final Comparator<User> COMPARE_BY_COUNT = new Comparator<User>() {
+        @Override
+        public int compare(User o1, User o2) {
+            return (int) (o1.getScore() - o2.getScore());
+        }
+    };
 }

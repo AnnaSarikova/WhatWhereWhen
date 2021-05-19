@@ -8,6 +8,10 @@ import com.example.demo.repo.QuestionRepository;
 import com.example.demo.repo.UserRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ *  answer service
+ *  сервис ответов в котором прописаны методы для контроллеров
+ */
 @Service
 public class AnswerService {
      private final AnswerRepository answerRepository;
@@ -18,6 +22,13 @@ public class AnswerService {
 
     }
 
+    /**
+     * checkansw
+     * проверка ответов
+     * @param answer answer
+     * @param id_question id_question
+     * @return {@link boolean}
+     */
     public boolean checkansw(String answer, String id_question) {
         if (answer.equalsIgnoreCase(String.valueOf((answerRepository.findById(Long.parseLong(id_question))).get().getAnswer()))){
             System.out.println("Ответы совпадают");

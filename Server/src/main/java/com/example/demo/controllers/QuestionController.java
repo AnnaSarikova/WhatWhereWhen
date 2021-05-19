@@ -10,26 +10,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ *  question controller
+ *  контроллер для обработки вопросов
+ */
 @RestController
 public class QuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
 
-    @GetMapping(value = "/question/{id}")
-    @ResponseBody
-    public ResponseEntity<?> read(@PathVariable("id") Long id) {
-        System.out.println(id);
-        Question question = questionRepository.findById(id).orElse(null);
-        System.out.println(question);
-
-        return question != null
-                ? new ResponseEntity<>(question, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-
-
+    /**
+     * quest
+     * отправка вопрос
+     * @param data data
+     * @return {@link ResponseEntity}
+     * @see ResponseEntity
+     * @see Question
+     */
     @PostMapping(value = "/question")
     public ResponseEntity<Question> quest(@RequestBody Map<String,String> data){
         String id = data.get("id");

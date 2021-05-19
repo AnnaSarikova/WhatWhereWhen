@@ -1,5 +1,4 @@
 package com.example.demo.controllers;
-
 import com.example.demo.models.User;
 import com.example.demo.repo.AnswerRepository;
 import com.example.demo.repo.UserRepository;
@@ -8,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Map;
 
+/**
+ *  answer controller
+ *  контроллер для обработки вопроса
+ */
 @RestController
 public class AnswerController {
 
@@ -24,6 +26,13 @@ public class AnswerController {
         this.userRepository = userRepository;
     }
 
+    /**
+     * answ
+     * проверка правильности ответа
+     * @param data data
+     * @return {@link User}
+     * @see User
+     */
     @PostMapping(value = "/answer")
     public User answ(@RequestBody Map<String,String> data) {
         String answer = data.get("answer");

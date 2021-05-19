@@ -1,13 +1,7 @@
 package sample.controllers;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Map;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +16,10 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.utils.API;
 
+/**
+ *  sign in controller
+ *  контроллер для окна войти
+ */
 public class SignInController<Gson> {
 
     @FXML
@@ -49,6 +47,12 @@ public class SignInController<Gson> {
     void initialize(URL url, ResourceBundle resources) {
     }
 
+    /**
+     * switch to sign up
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void switchToSignUp(ActionEvent event) throws IOException {
         Parent enter_page = FXMLLoader.load(getClass().getResource("/views/SignUp.fxml"));
@@ -60,18 +64,20 @@ public class SignInController<Gson> {
     }
 
 
+    /**
+     *  sign in action
+     *
+     * @param actionEvent actionEvent
+     * @throws IOException java.io. i o exception
+     */
     public void SignInAction(ActionEvent actionEvent) throws IOException {
 
         if (!SignInloginfield.getText().isBlank() && !SgnInPassword.getText().isBlank()) {
             String email = SignInloginfield.getText();
             String password = SgnInPassword.getText();
             Main.setUser(API.auth(email, password));
-            System.out.println(Main.getUser().getId());
 
-            if (Main.getUser() == null) {
-                LabelPassword.setText("Неправильный email или пароль");
-            }
-            else{
+            if (Main.getUser() != null) {
                 Node node = (Node) actionEvent.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
@@ -79,6 +85,10 @@ public class SignInController<Gson> {
                 Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 app_stage.setScene(scene);
                 app_stage.show();
+                //LabelPassword.setText("Неправильный email или пароль");
+            }
+            else{
+                LabelPassword.setText("Неправильный email или пароль");
             }
         }
         else {

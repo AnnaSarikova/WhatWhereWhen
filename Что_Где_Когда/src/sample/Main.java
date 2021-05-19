@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +22,10 @@ public class Main extends Application {
     public static void setUser(User user) {
         Main.user = user;
     }
+    private static User[] users;
+    public static User[] getUsers() {
+        return users;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,9 +33,6 @@ public class Main extends Application {
 
         primaryStage.setTitle("WhatWhereWhen");
 
-        //showAccountOverview();
-
-        //showSignInOverview();
 
         showSignUpOverview();
 
@@ -37,25 +40,20 @@ public class Main extends Application {
 
     }
 
+    /**
+     * show sign up overview
+     * вызов окна регистрация
+     * @throws IOException java.io. i o exception
+     */
     public void showSignUpOverview() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/views/SignUp.fxml"));
         Scene signUpScene = new Scene(root);
         primaryStage.setScene(signUpScene);
     }
 
-    public void showSignInOverview() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/SignIn.fxml"));
-        Scene signInScene = new Scene(root);
-        primaryStage.setScene(signInScene);
-    }
-
-    public void showAccountOverview() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/Account.fxml"));
-        Scene accountScene = new Scene(root);
-        primaryStage.setScene(accountScene);
-    }
 
     public static void main(String[] args) {
         launch(args);
     }
+
 }

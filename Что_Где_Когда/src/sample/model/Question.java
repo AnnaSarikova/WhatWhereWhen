@@ -1,5 +1,9 @@
 package sample.model;
 
+/**
+ *  question
+ *  модель на клиенте для хранения вопросов
+ */
 public class Question {
     private Long id_question;
     private String questions;

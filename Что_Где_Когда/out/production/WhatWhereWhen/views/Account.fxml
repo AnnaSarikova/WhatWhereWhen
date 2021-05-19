@@ -23,10 +23,10 @@
    <left>
       <AnchorPane prefHeight="332.0" prefWidth="135.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="ScoresButton" layoutX="29.0" layoutY="37.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #498eb8;" text="Баллы" textFill="WHITE" />
+            <Button fx:id="ScoresButton" layoutX="29.0" layoutY="37.0" mnemonicParsing="false" onAction="#ScoreAction" prefHeight="29.0" prefWidth="78.0" style="-fx-background-color: #498eb8;" text="Баллы" textFill="WHITE" />
             <Button fx:id="AboutUsButton" layoutX="29.0" layoutY="233.0" mnemonicParsing="false" onAction="#switchToAboutUs" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #498eb8;" text="О нас" textFill="WHITE" />
             <Button fx:id="RulesButton" layoutX="29.0" layoutY="166.0" mnemonicParsing="false" onAction="#switchToRules" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #498eb8;" text="Правила" textFill="WHITE" />
-            <Button fx:id="RatingButton" layoutX="29.0" layoutY="105.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #498eb8;" text="Рейтинг" textFill="WHITE" />
+            <Button fx:id="RatingButton" layoutX="29.0" layoutY="105.0" mnemonicParsing="false" onAction="#GoToRating" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #498eb8;" text="Рейтинг" textFill="WHITE" />
          </children>
       </AnchorPane>
    </left>

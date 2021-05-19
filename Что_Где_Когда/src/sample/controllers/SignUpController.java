@@ -1,29 +1,23 @@
 package sample.controllers;
-
-import java.awt.event.ActionEvent;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Stack;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.utils.API;
 
-import javax.swing.*;
 
+/**
+ *  sign up controller
+ *  контроллер для окна зарегистрироваться
+ */
 public class SignUpController {
 
     @FXML
@@ -53,6 +47,12 @@ public class SignUpController {
 
     }
 
+    /**
+     *  sign up action
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void SignUpAction(Event event) throws IOException {
         if (!SignUpFirstName.getText().isBlank() && !SignUpSecondName.getText().isBlank() &&
@@ -84,6 +84,12 @@ public class SignUpController {
         }
 
     }
+    /**
+     *  entre action
+     *
+     * @param actionEvent actionEvent
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void EntreAction(Event actionEvent) throws IOException{
         Node node = (Node) actionEvent.getSource();

@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
+/**
+ *  question
+ *  модель для таблицы вопросов
+ */
 @Entity
 @Table(name = "Question")
 public class Question {
@@ -19,8 +23,6 @@ public class Question {
     @JoinColumn(name = "id_answer")
     private Answer answer;
 
-    @ManyToMany(mappedBy = "questionSet")
-    private Set<User> users;
 
     public Long getId() {
         return id;
@@ -45,7 +47,6 @@ public class Question {
                 "id=" + id +
                 ", questions='" + questions + '\'' +
                 ", answer=" + answer +
-                ", users=" + users +
                 '}';
     }
 

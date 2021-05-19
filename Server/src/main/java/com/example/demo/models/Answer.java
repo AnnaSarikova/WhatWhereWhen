@@ -2,6 +2,10 @@ package com.example.demo.models;
 
 import javax.persistence.*;
 
+/**
+ *  answer
+ *  модель для таблицы ответа
+ */
 @Entity
 @Table(name = "Answer")
 public class Answer {
@@ -12,9 +16,6 @@ public class Answer {
 
     @Column(name = "answer")
     private String answer;
-
-
-
 
     @OneToOne(mappedBy = "answer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Question question;
@@ -34,8 +35,6 @@ public class Answer {
     public void setType(String type) {
         this.answer = type;
     }
-
-
 
     public Question getQuestion() {
         return question;

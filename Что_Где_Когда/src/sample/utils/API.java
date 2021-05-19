@@ -1,28 +1,30 @@
 package sample.utils;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import sample.Main;
 import sample.model.Question;
 import sample.model.User;
-
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ *  a p i
+ *  запросы отправляемые клиентом
+ */
 public class API {
 
     static String serverURL = "http://localhost:8081";
     private static final Gson gson = new Gson();
 
-
     /**
-     * Регистрация пользователя в системе
-     *
+     * registration
+     * регистрация пользователя в системе
+     * @param first_name first_name
+     * @param second_name second_name
+     * @param email email
+     * @param password password
+     * @return {@link Map}
+     * @see Map
+     * @see String
+     * @see Object
      */
     public static Map<String, Object> registration(String first_name, String second_name, String email, String password) {
 
@@ -39,13 +41,14 @@ public class API {
         }};
     }
 
+
     /**
-     * Авторизация пользователя в системе
-     * с помощью пары логин-пароль
-     *
-     * @param email    - логин пользователя
-     * @param password - пароль пользоваетля
-     * @return boolean
+     * auth
+     * авторизация пользователя через email и парроль
+     * @param email email
+     * @param password password
+     * @return {@link User}
+     * @see User
      */
     public static User auth(String email, String password) {
         String URL = serverURL+"/auth";
@@ -57,6 +60,13 @@ public class API {
         return gson.fromJson(userString, User.class);
     }
 
+    /**
+     * getquest
+     * запрос на взятие вопроса из бд на сервере
+     * @param id id
+     * @return {@link Question}
+     * @see Question
+     */
     public static Question getquest(int id){
 
         String URL = serverURL + "/question";
@@ -67,6 +77,17 @@ public class API {
 
     }
 
+    /**
+     * checkansw
+     * проверка ответа введенного пользователем
+     * @param answer answer
+     * @param id_question id_question
+     * @param id id
+     * @return {@link Map}
+     * @see Map
+     * @see String
+     * @see String
+     */
     public static Map<String,String> checkansw(String answer, String id_question, String id){
         String URL = serverURL + "/answer";
         Map<String, String> params = new HashMap<>();
@@ -82,5 +103,40 @@ public class API {
 
     }
 
+    /**
+     * rating
+     * возвращает пользователю его рейтинг
+     * @param score score
+     * @return {@link Integer}
+     * @see Integer
+     */
+    public static Integer rating( Long score){
+        String URL = serverURL + "/rating";
+        Map<String, String> params = new HashMap<>();
+        params.put("score",String.valueOf(score));
+        String ratString = RequestUtil.sendPOST(URL, params);
+        System.out.println(ratString);
+        return Integer.parseInt(ratString);
+
+    }
+
+    /**
+     * checkupdate
+     * обновляет баллы пользователя
+     * @param id id
+     * @param score score
+     * @return {@link User}
+     * @see User
+     */
+    public static User checkupdate(String id,String score){
+        String URL = serverURL + "/updatescore";
+        Map<String, String> params = new HashMap<>();
+        params.put("id", id);
+        params.put("score", score);
+        String update = RequestUtil.sendPOST(URL, params);
+        System.out.println(update);
+        return gson.fromJson(update, User.class);
+
+    }
 
 }

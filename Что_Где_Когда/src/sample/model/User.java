@@ -1,6 +1,11 @@
 package sample.model;
 
-public class User {
+/**
+ *  user
+ *  модель на клиента для хранения юзера
+ */
+public class User  {
+
     private Long id;
 
     private String FirstName;
@@ -18,8 +23,7 @@ public class User {
     }
 
     public void setId(Long id) {
-        this.id = id
-        ;
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -54,12 +58,23 @@ public class User {
         this.password = password;
     }
 
-    public Long getScore() {
+    public long getScore() {
         return score;
     }
 
     public void setScore(Long score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", FirstName='" + FirstName + '\'' +
+                ", SecondName='" + SecondName + '\'' +
+                ", password='" + password + '\'' +
+                ", score=" + score +
+                '}';
     }
 
 

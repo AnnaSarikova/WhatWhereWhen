@@ -20,6 +20,10 @@ import sample.utils.API;
 
 import javax.swing.text.html.ImageView;
 
+/**
+ *  game controller
+ *  контроллер для окна игры
+ */
 public class GameController {
 
     private Question question;
@@ -51,6 +55,12 @@ public class GameController {
     void initialize() {
     }
 
+    /**
+     * switch to game
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void switchToGame(ActionEvent event) throws IOException {
         if (GameTextAreaAnswer != null) {
@@ -60,12 +70,10 @@ public class GameController {
 
             System.out.println(id_question);
             System.out.println(Main.getUser().getId());
-
             Long id_user = Main.getUser().getId();
             System.out.println(id_user);
             Map<String, String> checkanswer = API.checkansw(answer,id_question,String.valueOf(Main.getUser().getId()));
             if (!checkanswer.isEmpty()) {
-
                 Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Game.fxml"));
                 Scene enter_page_scene = new Scene(enter_page);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -73,12 +81,14 @@ public class GameController {
                 app_stage.show();
             }
         }
-        else {
-
-        }
-
     }
 
+    /**
+     *  end button action
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void EndButtonAction(ActionEvent event) throws IOException{
         Parent enter_page = FXMLLoader.load(getClass().getResource("/views/Account.fxml"));
@@ -89,13 +99,13 @@ public class GameController {
     }
 
 
-    @FXML
-    public void SendAnswerAction(ActionEvent event) throws IOException{
-        String text = new String();
-        text = GameTextAreaAnswer.getText();
 
-    }
-
+    /**
+     *  show question action
+     *
+     * @param event event
+     * @throws IOException java.io. i o exception
+     */
     @FXML
     public void ShowQuestionAction(ActionEvent event) throws IOException{
 
