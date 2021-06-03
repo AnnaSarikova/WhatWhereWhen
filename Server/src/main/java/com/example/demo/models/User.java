@@ -94,11 +94,14 @@ public class User {
 
     public User(){}
 
-    public User(String firstName, String secondName,String email, String password){
+    public User(Long id,String firstName, String secondName,String email, String password,Long score){
+        this.id = id;
         this.FirstName = firstName;
         this.SecondName = secondName;
         this.email = email;
         this.password = password;
+        this.score = score;
+
     }
     public static final Comparator<User> COMPARE_BY_COUNT = new Comparator<User>() {
         @Override

@@ -38,10 +38,6 @@ public class AnswerController {
         String answer = data.get("answer");
         String id_question = data.get("id_question");
         String id = data.get("id");
-        System.out.println(id);
-        System.out.println(id_question);
-        System.out.println(answer);
-        System.out.println(answerRepository.findById(Long.parseLong(id_question)));
         boolean ans = answerService.checkansw(answer, id_question);
         if (ans){
             User user = userRepository.findById(Long.parseLong(id)).orElse(null);
